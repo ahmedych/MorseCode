@@ -1,0 +1,1 @@
+This is my example of plain text that I want to convert in Morse alphabet using my application. After that I want to obtain this text again.
