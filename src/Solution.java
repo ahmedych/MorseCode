@@ -5,14 +5,12 @@ public class Solution {
     private static Map<String, String> alphabet = new HashMap<>();
 
     public static void main(String[] args) {
-        File propFile = new File("C:\\Users\\A\\IdeaProjects\\MorseCode\\src\\resources\\Morse.properties");
-        File source = new File("C:\\Users\\A\\IdeaProjects\\MorseCode\\src\\resources\\sample.txt");
-        File output = new File("C:\\Users\\A\\IdeaProjects\\MorseCode\\src\\resources\\output.txt");
+        File propFile = new File("src\\resources\\Morse.properties");
+        File source = new File("src\\resources\\sample.txt");
+        File output = new File("src\\resources\\output.txt");
         Properties properties = new Properties();
         try {
             properties.load(new FileReader(propFile));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,7 +32,7 @@ public class Solution {
         System.out.println();
     }
 
-    public static ArrayList<String> convertToMorse(String[] words) {
+    private static ArrayList<String> convertToMorse(String[] words) {
         ArrayList<String> listOfWordsInMorse = new ArrayList<>();
         for (String s : words) {
             char[] charArrayOfWord = s.toCharArray();
@@ -45,20 +43,18 @@ public class Solution {
         return listOfWordsInMorse;
     }
 
-    public static void writeToFile(File output, List<String> list) {
+    private static void writeToFile(File output, List<String> list) {
         try (FileWriter writer = new FileWriter(output)) {
             for (String s : list) {
                 writer.write(s);
                 writer.append(" ");
             }
-        } catch (FileNotFoundException e) {
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public static ArrayList<String> convertMorseToEngFromFile(File morseFile) {
+
+    private static ArrayList<String> convertMorseToEngFromFile(File morseFile) {
         ArrayList<String> list = new ArrayList<>();
         try (Scanner scanner = new Scanner(morseFile)) {
             String content = scanner.useDelimiter("\\Z").next();
