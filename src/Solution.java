@@ -29,7 +29,7 @@ public class Solution {
         for (String s : textAgain) {
             System.out.print(s);
         }
-        writeToFile(outputText, textAgain);
+        writeLettersToFile(outputText, textAgain);
     }
 
     private static ArrayList<String> convertToMorse(String words) {
@@ -46,6 +46,15 @@ public class Solution {
             for (String s : list) {
                 writer.write(s);
                 writer.append(" ");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void writeLettersToFile (File output, List<String> list) {
+        try (FileWriter writer = new FileWriter(output)) {
+            for (String s : list) {
+                writer.write(s);
             }
         } catch (IOException e) {
             e.printStackTrace();
